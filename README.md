@@ -1,4 +1,4 @@
-#  Mean and variance of a discrete  distribution
+#  EX-01: Mean and variance of a discrete  distribution
 
 
 # Aim : 
@@ -53,33 +53,39 @@ Developed by : KEERTHANA SARAVANAN
 Register number : 212223240070
 ```
 import numpy as np
-L=[int(i) for i in input().split()]
-N=len(L); M=max(L) 
-x=list();f=list()
-for i in range (M+1):
-    c = 0
-    for j in range(N):
-        if L[j]==i:
-            c=c+1
-    f.append(c)
-    x.append(i)
-sf=np.sum(f)
-p=list()
-for i in range(M+1):
-    p.append(f[i]/sf) 
-mean=np.inner(x,p)
-EX2=np.inner(np.square(x),p)
-var=EX2-mean**2 
-SD=np.sqrt(var)
-print("The Mean arrival rate is %.3f "%mean)
-print("The Variance of arrival from feeder is %.3f "%var) 
-print("The Standard deviation of arrival from feeder is %.3F "%SD)
+
+# Input and initial processing
+L = np.array([int(i) for i in input().split()])
+N = len(L)
+
+# Frequency counts
+unique, counts = np.unique(L, return_counts=True)
+f = counts
+x = unique
+
+# Total occurrences
+sf = f.sum()
+
+# Probabilities
+p = f / sf
+
+# Calculations
+mean = np.dot(x, p)
+EX2 = np.dot(x**2, p)
+var = EX2 - mean**2
+SD = np.sqrt(var)
+
+# Output results
+print(f"The Mean arrival rate is {mean:.3f}")
+print(f"The Variance of arrival from feeder is {var:.3f}")
+print(f"The Standard deviation of arrival from feeder is {SD:.3f}")
+
+  
 ```
 
 
 # Output : 
-![image](https://github.com/SAIDARSHINI27072005/Mean-and-Variance/assets/147474227/9a391110-972f-4d49-b2b6-6f3c2f847dab)
-
+![image](https://github.com/user-attachments/assets/ec2c0f22-f20f-4b36-aa00-00470ed83c5c)
 
 # Results :
 The mean and variance of arrivals of objects from feeder using probability distribution are calculated.
